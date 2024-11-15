@@ -1,22 +1,23 @@
-const checkboxes = document.querySelectorAll('.form-control');
+const checkboxes = document.querySelectorAll('tr input[type="checkbox"]');
+const inputs = document.querySelectorAll('tr input[type="text"]');
 
 const actividadesseleccionadas = new Set()
 const casillasseleccionadas = new Map()
 
 for(let i = 0; i < checkboxes.length; i++){
     const checkbox = checkboxes[i];
-    const casilla = i + 1;
+    const inputtexto = inputs[i];
 
     checkbox.addEventListener('change', (event) => {
-        const actividad = checkbox.value;
+        const actividad = inputtexto.value;
         console.log(`Tarea a realizada: ${actividad}`);
 
         if(event.target.checked){
+            console.log(`Tarea agregada: ${actividad}`)
             actividadesseleccionadas.add(actividad);
-            casillasseleccionadas.set(casillaid, actividad);
         } else {
+            console.log(`Tarea eliminada: ${actividad}`)
             actividadesseleccionadas.delete(actividad);
-            casillasseleccionadas.delete(casilla);
         }
         console.log('-------------------------')
     })
